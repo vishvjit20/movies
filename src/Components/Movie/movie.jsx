@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { IMAGE_URL } from "../../API/secrets";
+import "./movie.css";
 
 class Movie extends Component {
   state = {};

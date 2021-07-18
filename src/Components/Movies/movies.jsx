@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Movie from "../Movie/movie";
+import "./movies.css";
 
 class Movies extends Component {
   state = {};
