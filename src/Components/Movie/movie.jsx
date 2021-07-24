@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Link } from "react-router-dom";
 import { IMAGE_URL } from "../../API/secrets";
 import "./movie.css";
 
@@ -13,7 +14,9 @@ class Movie extends Component {
     return (
       <div className="movie-item">
         <div className="movie-poster">
-          <img src={posterPath} alt="" />
+          <Link to={{ pathname: "/moviepage", state: { foo: "bar" } }}>
+            <img src={posterPath} alt="" />
+          </Link>
         </div>
         <div className="movie-info">
           <div className="movie-title">{title}</div>

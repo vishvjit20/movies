@@ -7,7 +7,7 @@ class Pagination extends Component {
     return (
       <nav aria-label="...">
         <ul className="pagination justify-content-center">
-          {this.props.currPage == 1 ? (
+          {this.props.currPage === 1 ? (
             <li className="page-item disabled">
               <a className="page-link" aria-disabled="true">
                 Previous
@@ -21,7 +21,7 @@ class Pagination extends Component {
             </li>
           )}
           {this.props.pages.map((pageCount) => {
-            return pageCount == this.props.currPage ? (
+            return pageCount === this.props.currPage ? (
               <li className="page-item active">
                 <a className="page-link">{pageCount}</a>
               </li>
@@ -34,7 +34,7 @@ class Pagination extends Component {
               </li>
             );
           })}
-          {this.props.currPage == this.props.pages.length ? (
+          {this.props.currPage === this.props.pages.length ? (
             <li className="page-item disabled">
               <a className="page-link" aria-disabled="true">
                 Next

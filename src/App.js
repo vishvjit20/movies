@@ -4,6 +4,9 @@ import Movies from "./Components/Movies/movies";
 import axios from "axios";
 import { API_KEY, API_URL } from "./API/secrets";
 import Pagination from "./Components/Pagination/Pagination";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Favourite from "./Components/Favourite/Favourite";
+import MoviePage from "./Components/MoviePage/MoviePage";
 
 class App extends Component {
   state = {
@@ -105,23 +108,36 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Header setMovies={this.setMovies}></Header>
-        {this.state.moviesData.length ? (
-          <React.Fragment>
-            <Movies movies={this.state.moviesData}></Movies>
-            <Pagination
-              pages={this.state.pages}
-              currPage={this.state.currPage}
-              nextPage={this.nextPage}
-              previousPage={this.previousPage}
-              setPage={this.setPage}
-            ></Pagination>
-          </React.Fragment>
-        ) : (
-          <h1>Oops! No movies found</h1>
-        )}
-      </div>
+      <Router>
+        <div className="App">
+          <Header setMovies={this.setMovies}></Header>
+          <Switch>
+            <Route path="/" exact>
+              {this.state.moviesData.length ? (
+                <React.Fragment>
+                  <Movies movies={this.state.moviesData}></Movies>
+                  <Pagination
+                    pages={this.state.pages}
+                    currPage={this.state.currPage}
+                    nextPage={this.nextPage}
+                    previousPage={this.previousPage}
+                    setPage={this.setPage}
+                  ></Pagination>
+                </React.Fragment>
+              ) : (
+                <h1>Oops! No movies found</h1>
+              )}
+            </Route>
+
+            <Route path="/fav" exact>
+              {" "}
+              <Favourite></Favourite>
+            </Route>
+
+            <Route path="/moviepage" exact component={MoviePage}></Route>
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
