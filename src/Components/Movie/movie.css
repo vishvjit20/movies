@@ -6,6 +6,11 @@
   background: #4c4c6d;
 }
 
+.movie-item:hover {
+  transform: scale(1.1);
+  transition: transform 0.5s;
+}
+
 .movie-poster {
   height: 90%;
   width: 100%;
